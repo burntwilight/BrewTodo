@@ -1,8 +1,8 @@
-import React from 'react'
+'use client'
 
 const ItemText = () => {
   return (
-    <div>ItemText</div>
+    <div>{}</div>
   )
 }
 

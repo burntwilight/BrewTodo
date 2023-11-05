@@ -1,6 +1,6 @@
 'use client'
 
-const Button = () => {
+const DeleteButton = () => {
   return (
     <div>
       <button className='
@@ -24,4 +24,4 @@ const Button = () => {
   )
 }
 
-export default Button
+export default DeleteButton

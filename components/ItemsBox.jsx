@@ -1,24 +1,20 @@
 'use client'
 
-import SaveButton from "./SaveButton"
-import Item from './Item'
+import ItemText from './ItemText'
 import getUserItems from '@/actions/getUserItems'
-import DeleteButton from '@/components/DeleteButton'
+import ItemInput from '@/components/ItemInput'
 
 
-const Box = () => {
+const ItemsBox = () => {
 
   const userItems = getUserItems()
 
   return (
-    <div className="border border-text rounded-2xl flex flex-center items-center p-4">
-      <div className="">
-        <Item />
-        {/* {userItems.map(item => <Item key={index} item={item} />)} */}
-      </div>
-      
+    <div className="h-auto border border-text rounded-2xl flex flex-center items-center p-4 w-fit">
+        {/* {userItems.map(item => <ItemText key={index} item={item} />)} */}
+        <ItemInput />
     </div>
   )
 }
 
-export default Box
+export default ItemsBox
