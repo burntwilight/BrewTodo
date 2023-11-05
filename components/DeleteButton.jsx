@@ -5,9 +5,9 @@ const Button = () => {
     <div>
       <button className='
         rounded-full
-        p-4
-        w-8
-        h-8
+        p-3
+        w-4
+        h-4
         bg-accent
         text-text
         border-none

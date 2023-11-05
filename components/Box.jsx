@@ -11,8 +11,9 @@ const Box = () => {
   const userItems = getUserItems()
 
   return (
-    <div>
-      <div>
+    <div className="border border-accent flex flex-center items-center p-4">
+      <div className="">
+        <Item />
         {/* {userItems.map(item => <Item key={index} item={item} />)} */}
       </div>
       <div className="flex justify-center items-center">
