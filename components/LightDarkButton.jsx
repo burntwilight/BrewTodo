@@ -16,7 +16,7 @@ const LightDarkButton = () => {
     return (
         <div>
             <button className='flex justify-center items-center w-8 h-8 hover:-translate-y-1 hover:shadow-lg hover:shadow-primary transition bg-transparent rounded-full p-1 border-2 border-text' onClick={toggleMode}>
-                {currentMode ? <BsFillMoonStarsFill className='w-6 h-6'/> : <BiSun className='bg-white rounded-full'/>}
+                {currentMode ? <BsFillMoonStarsFill className='w-6 h-6'/> : <BiSun className='w-6 h-6'/>}
             </button>
         </div>
     )
