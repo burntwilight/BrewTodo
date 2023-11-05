@@ -5,7 +5,7 @@ const Item = () => {
 
   return (
     <div>
-      <input className="pl-1" placeholder="ENTER TEXT HERE" />
+      <textarea id="text-area" className="border-accent rounded-2xl m-4 pl-2 pt-2 text-text bg-background" placeholder="Enter your task here" />
     </div>
   )
 }

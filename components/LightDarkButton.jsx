@@ -2,15 +2,24 @@
 
 import { BsFillMoonStarsFill } from 'react-icons/bs'
 import { BiSun } from 'react-icons/bi'
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 
 const LightDarkButton = () => {
-    const [currentMode, setCurrentMode] = useState(true)
+    const [currentMode, setCurrentMode] = useState(false)
+
+    useEffect(() => {
+        const html = document.querySelector('html')
+        if (html) {
+            if (currentMode) {
+                html.classList.add('dark')
+            } else {
+                html.classList.remove('dark')
+            }
+        }
+    }, [currentMode])
 
     const toggleMode = () => {
         setCurrentMode(!currentMode)
-        const html = document.querySelector('html')
-        html.classList.toggle('dark')
     }
     
     return (
