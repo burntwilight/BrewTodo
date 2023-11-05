@@ -16,7 +16,7 @@ const Button = () => {
         flex
         justify-center
         items-center
-        text-sm
+        text-sm     
       '>
         x
       </button>

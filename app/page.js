@@ -1,4 +1,4 @@
-import Box from "@/components/Box"
+import Box from "@/components/ItemsBox"
 
 const Page = () => {
   return (
