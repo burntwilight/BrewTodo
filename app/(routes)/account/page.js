@@ -4,7 +4,7 @@ import { createBrowserClient } from '@supabase/ssr'
 import { useRouter } from "next/navigation"
 import { useState } from 'react'
 
-const page = () => {
+const page = async () => {
   const router = useRouter
   const supabase = createBrowserClient(
     process.env.NEXT_PUBLIC_SUPABASE_URL,
@@ -12,6 +12,13 @@ const page = () => {
   )
   const [username, setUsername] = useState('')
   const [password, setPassword] = useState('')
+
+  const { data, error } = await supabase
+  .from('users')
+  .insert([
+    { some_column: 'someValue', other_column: 'otherValue' },
+  ])
+  .select()
 
   const handleSignUp = async () => {
     await supabase.auth.signUp({

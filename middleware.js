@@ -1,5 +1,5 @@
-const { createServerClient } = require('@supabase/ssr');
-const { NextResponse } = require('next/server');
+import { createServerClient } from '@supabase/ssr';
+import { NextResponse } from 'next/server';
 
 async function middleware(request) {
   let response = NextResponse.next({
@@ -59,4 +59,4 @@ async function middleware(request) {
   return response;
 }
 
-module.exports = { middleware };
+export { middleware };
