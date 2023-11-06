@@ -2,7 +2,7 @@
 
 const Footer = () => {
   return (
-    <footer className="flex justify-center p-4 text-text text-md">
+    <footer className="min-h-[10vh] flex justify-center p-4 text-text text-md">
         © Dakota Grey Bradford {new Date().getFullYear()}
     </footer>
   )

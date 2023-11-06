@@ -43,6 +43,7 @@ const ItemInput = () => {
         scroll
         resize-y
         h-auto
+        text-sm
         " 
         placeholder="Enter your task here"
       />

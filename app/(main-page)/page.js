@@ -1,11 +1,27 @@
 import ItemsBox from "@/components/ItemsBox"
 
 const Page = () => {
-  return (
+  const user = false
+
+  const handleSignOut = async () => {
+    await supabase.auth.signOut()
+    router.refresh()
+  }
+
+  if (user) {
+    return (
+      <main className="min-h-[80vh] w-full flex flex-col justify-between items-center p-24">
+        <ItemsBox />
+      </main>
+    )
+  } else {
+    return (
     <main className="min-h-[80vh] w-full flex flex-col justify-between items-center p-24">
-      <ItemsBox />
+      <h1 className="text-text">User not logged in</h1>
     </main>
-  )
+    )
+  }
+  
 }
 
 export default Page

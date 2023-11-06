@@ -1,8 +1,10 @@
 'use client'
+import { createClient } from "@supabase/supabase-js"
 
-const ItemText = () => {
+
+const ItemText = (props) => {
   return (
-    <div>{}</div>
+    <div>{props.item_text}{props.completed}</div>
   )
 }
 
