@@ -20,7 +20,7 @@ const Navbar = () => {
       <nav className="p-4 min-h-[10vh] flex justify-between text-text">
         <div className='flex justify-start'>
           <button className='w-6 h-6 hover:-translate-y-1 transition' onClick={navigateToMainPage}><PiCoffeeThin className="w-6 h-6" /></button>
-          <p className="text-md font-bold pl-4 pt-0.5">BrewTodo</p>
+          <button onClick={navigateToMainPage} className='flex'><p className="text-md font-bold pl-4 pt-1 hover:text-primary transition">BrewTodo</p></button>
         </div>
         <div className='flex justify-end h-8 w-8 gap-2'>
           <LightDarkButton />

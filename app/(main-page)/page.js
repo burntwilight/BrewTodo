@@ -17,7 +17,7 @@ const Page = () => {
   } else {
     return (
     <main className="min-h-[80vh] w-full flex flex-col justify-between items-center p-24">
-      <h1 className="text-text">User not logged in</h1>
+      <h1 className="text-text">Please sign in</h1>
     </main>
     )
   }
