@@ -1,13 +1,18 @@
 'use client'
 
 const SaveButton = () => {
+
+  const handleClick = () => {
+    return
+  }
+
   return (
     <div className="p-4">
       <button className='
         rounded-full
-        p-3
-        w-4
-        h-4
+        p-4
+        w-6
+        h-6
         bg-primary
         text-text
         border-none
@@ -17,7 +22,9 @@ const SaveButton = () => {
         justify-center
         items-center
         text-sm
-      '>
+      '
+      onClick={handleClick}
+      >
         +
       </button>
     </div>

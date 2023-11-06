@@ -1,7 +1,7 @@
 'use client'
 
 import ItemText from './ItemText'
-import getUserItems from '@/actions/getUserItems'
+import getUserItems from '@/app/api/getUserItems'
 import ItemInput from '@/components/ItemInput'
 
 

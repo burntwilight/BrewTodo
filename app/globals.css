@@ -29,6 +29,6 @@ html, body {
 }
 
 #text-area {
--ms-overflow-style: none; 
-scrollbar-width: none;
+  -ms-overflow-style: none; 
+  scrollbar-width: none;
 }

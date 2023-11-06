@@ -5,9 +5,9 @@ const DeleteButton = () => {
     <div>
       <button className='
         rounded-full
-        p-3
-        w-4
-        h-4
+        p-4
+        w-6
+        h-6
         bg-accent
         text-text
         border-none

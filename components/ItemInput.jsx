@@ -33,9 +33,9 @@ const ItemInput = () => {
         className="
         min-h-[10vh] 
         outline-text 
-        border-accent 
+        outline-1
         rounded-xl 
-        m-4 
+        m-1
         px-2 
         pt-2 
         text-text 
@@ -46,7 +46,7 @@ const ItemInput = () => {
         " 
         placeholder="Enter your task here"
       />
-      <div className="flex justify-center items-center pb-2">
+      <div className="flex justify-center items-center">
         <SaveButton />
         <DeleteButton />
       </div>
