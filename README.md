@@ -1,4 +1,4 @@
-[BrewTodo](https://github/burntwilight.com)
+([BrewTodo](https://github.com/burntwilight/BrewTodo))
 
 ## Description
 
