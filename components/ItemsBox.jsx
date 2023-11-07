@@ -1,5 +1,3 @@
-'use client'
-
 import ItemText from './ItemText'
 import ItemInput from '@/components/ItemInput'
 

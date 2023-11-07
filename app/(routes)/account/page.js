@@ -1,76 +1,150 @@
-'use client'
+import Link from 'next/link'
+import { headers, cookies } from 'next/headers'
+import { createClient } from '@/utils/supabase/server'
+import { redirect } from 'next/navigation'
+import { toast } from "react-hot-toast"
 
-import { createBrowserClient } from '@supabase/ssr'
-import { useRouter } from "next/navigation"
-import { useState } from 'react'
+const page = async (searchParams) => {
+  const signIn = async (formData) => {
+    'use server'
 
-const page = async () => {
-  const router = useRouter
-  const supabase = createBrowserClient(
-    process.env.NEXT_PUBLIC_SUPABASE_URL,
-    process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY
-  )
-  const [username, setUsername] = useState('')
-  const [password, setPassword] = useState('')
+    const email = formData.get('email')
+    const password = formData.get('password')
+    const cookieStore = cookies()
+    const supabase = createClient(cookieStore)
 
-  const { data, error } = await supabase
-  .from('users')
-  .insert([
-    { some_column: 'someValue', other_column: 'otherValue' },
-  ])
-  .select()
-
-  const handleSignUp = async () => {
-    await supabase.auth.signUp({
-      email: username,
-      password: password,
-      options: {
-        emailRedirectTo: `${location.origin}/auth/callback`
-      }
+    const { error } = await supabase.auth.signInWithPassword({
+      email,
+      password,
     })
-    // POSSIBLY ADD TOAST FOR SIGN IN SUCCESS BEFORE REDIRECT
-  
-    router.push('/')
+
+    if (error) {
+      // toast.error(error.message)
+      return redirect('/account?message=Could not authenticate user log in')
+    }
+
+    // toast.success('Successfully signed in!')
+    return redirect('/')
   }
 
-  const handleSignIn = async () => {
-    await supabase.auth.signInWithPassword({
-      email: username,
-      password: password
+  const signUp = async (formData) => {
+    'use server'
+
+    const origin = headers().get('origin')
+    const email = formData.get('email')
+    const password = formData.get('password')
+    const cookieStore = cookies()
+    const supabase = createClient(cookieStore)
+
+    const { error } = await supabase.auth.signUp({
+      email,
+      password,
+      options: {
+        emailRedirectTo: `${origin}/auth/callback`,
+      },
     })
 
-    // ADD TOAST BEFORE REDIRECT FOR SUCCESS
-    router.push('/')
+    if (error) {
+      // toast.error(error.message)
+      return redirect('/account?message=Could not authenticate user signup')
+    } 
+
+    // toast.success("Success! Check email to continue sign in process.")
+    return redirect('/account?message=Check email to continue sign in process')
   }
 
   return (
-    <main className="min-h-[80vh] w-full flex flex-col justify-between items-center p-24">
-      <form className="bg-background border border-text rounded px-8 pt-6 pb-8 mb-4">
-          <div className="mb-4">
-            <label className="block text-text text-sm font-bold mb-2">
-              Username
-            </label>
-            <input className="shadow appearance-none border rounded w-full py-2 px-3 text-text leading-tight focus:outline-none focus:shadow-outline" id="username" type="text" placeholder="Username" value={username} onChange={(e) => setUsername(e.target.value)} />
-          </div>
-          <div className="mb-6">
-            <label className="block text-text text-sm font-bold mb-2">
-              Password
-            </label>
-            <input className="shadow appearance-none border border-background rounded w-full py-2 px-3 text-text mb-3 leading-tight focus:outline-none focus:shadow-outline" id="password" type="password" placeholder="******************" value={password} onChange={(e) => setPassword(e.target.value)} />
-            <p className="text-text text-xs italic">Please choose a password.</p>
-          </div>
-          <div className="flex items-center justify-between gap-4">
-            <button className="bg-primary hover:bg-primary text-text font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline" type="button" onClick={handleSignIn}>
-              Sign In
-            </button>
-            <button className="bg-primary hover:bg-primary text-text font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline" type="button" onClick={handleSignUp}>
-              Sign Up
-            </button>
-            <a className="inline-block align-baseline font-bold text-sm text-text hover:text-primary" href="#">
-              Forgot Password?
-            </a>
-          </div>
-        </form>
+    <main className="
+      min-h-[80vh] 
+      w-full 
+      flex 
+      flex-col 
+      justify-between 
+      items-center 
+      p-24
+    ">
+      <Link
+        href="/"
+        className="absolute left-2 top-16 py-2 px-4 rounded-md no-underline text-text bg-btn-background hover:bg-btn-background-hover flex items-center group text-sm"
+      >
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          width="24"
+          height="24"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          strokeWidth="2"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          className="mr-2 h-4 w-4 transition-transform group-hover:-translate-x-1"
+        >
+          <polyline points="15 18 9 12 15 6" />
+        </svg>{' '}
+        Back
+      </Link>
+
+      <form
+        className="animate-in flex-1 flex flex-col w-full justify-center gap-2 text-text"
+        action={signIn}
+      >
+        <label className="text-md text-text" htmlFor="email">
+          Email
+        </label>
+        <input
+          className="rounded-md px-4 py-2 bg-background text-text border mb-6"
+          name="email"
+          placeholder="you@example.com"
+          required
+        />
+        <label className="text-md text-text" htmlFor="password">
+          Password
+        </label>
+        <input
+          className="rounded-md px-4 py-2 bg-background text-text border mb-6"
+          type="password"
+          name="password"
+          placeholder="••••••••"
+          required
+        />
+        <button className="
+          bg-primary 
+          rounded-md 
+          px-4 
+          py-2 
+          text-foreground 
+          mb-2 
+          hover:-translate-y-1
+          hover:shadow-lg
+          hover:shadow-primary
+          transition
+        ">
+          Sign In
+        </button>
+        <button
+          formAction={signUp}
+          className="
+            border 
+            border-text/20 
+            rounded-md 
+            px-4 
+            py-2 
+            text-text 
+            mb-2
+            hover:-translate-y-1
+            hover:shadow-lg
+            hover:shadow-secondary
+            transition            
+        "
+        >
+          Sign Up
+        </button>
+        {searchParams?.message && (
+          <p className="mt-4 p-4 bg-text/10 text-text text-center">
+            {searchParams.message}
+          </p>
+        )}
+      </form>
     </main>
   )
 }

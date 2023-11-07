@@ -1,5 +1,3 @@
-'use client'
-
 import { BsFillMoonStarsFill } from 'react-icons/bs'
 import { BiSun } from 'react-icons/bi'
 import { useEffect, useState } from 'react'

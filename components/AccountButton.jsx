@@ -1,5 +1,3 @@
-'use client'
-
 import { BsPerson } from 'react-icons/bs'
 import { useRouter } from 'next/navigation'
 
