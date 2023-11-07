@@ -1,12 +1,14 @@
 import { createServerComponentClient } from "@supabase/auth-helpers-nextjs"
 import { cookies } from "next/headers"
 
-const getUserItems = async () => {
+const deleteUserItem = async (id) => {
     const cookieStore = cookies()
     const supabase = createServerComponentClient({ cookies: () => cookieStore})
     const { data, error } = await supabase
       .from('todos')
-      .select('*')
+      .delete()
+      .eq('id', id)
+
     
     if (error) {
       console.log(error)
@@ -16,4 +18,4 @@ const getUserItems = async () => {
 
 
 
-export default getUserItems
+export default deleteUserItem
