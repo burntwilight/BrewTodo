@@ -4,6 +4,8 @@ const DeleteButton = () => {
       <button className='
         rounded-full
         p-4
+        sm:p-6
+        sm:text-lg        
         w-6
         h-6
         bg-accent
