@@ -4,20 +4,22 @@
 
 @layer base {
   :root {
-    --text: #000000;
-    --background: #ffffff;
-    --primary: #8fb2ff;
-    --secondary: #ebf1ff;
-    --accent: #d31d6c;
+    --text: #0c0c08;
+    --background: #fbfbf9;
+    --primary: #c6d4bf;
+    --secondary: #e0ebe2;
+    --accent: #66996e;
   }
   .dark {
-    --text: #ffffff;
-    --background: #000000;
-    --primary: #002470;
-    --secondary: #000614;
-    --accent: #e22c7b;
+    --text: #f7f7f3;
+    --background: #060604;
+    --primary: #32402b;
+    --secondary: #141f16;
+    --accent: #66996e;
   }
 }
+
+
 
 html, body {
   background-color: var(--background);

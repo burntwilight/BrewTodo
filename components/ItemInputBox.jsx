@@ -31,6 +31,8 @@ const ItemInputBox = () => {
         ref={textAreaRef}
         id="text-area"
         className="
+        border
+        border-secondary
         w-full
         min-h-[10vh] 
         outline-text 
