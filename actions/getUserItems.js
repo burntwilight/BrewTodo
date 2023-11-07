@@ -10,8 +10,9 @@ const getUserItems = async () => {
     
     if (error) {
       console.log(error)
+      return []
     }
-    return data
+    return data || []
 }
 
 

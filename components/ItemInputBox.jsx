@@ -4,7 +4,7 @@ import React, { useEffect, useRef } from 'react'
 import SaveButton from '@/components/SaveButton'
 import DeleteButton from '@/components/DeleteButton'
 
-const ItemInput = () => {
+const ItemInputBox = () => {
   const textAreaRef = useRef(null)
 
   useEffect(() => {
@@ -26,28 +26,29 @@ const ItemInput = () => {
   
   
   return (
-    <div className='flex flex-center items-center p-4'>
+    <div className='animate-in-side w-full border border-text rounded-xl flex flex-col sm:flex-row justify-center items-center p-4 min-w-[30vw]'>
       <textarea
         ref={textAreaRef}
         id="text-area"
         className="
+        w-full
         min-h-[10vh] 
         outline-text 
         outline-1
-        rounded-xl 
+        rounded 
         m-1
         px-2 
         pt-2 
         text-text 
         bg-background
         scroll
-        resize-y
         h-auto
-        text-sm
-        " 
+        resize-none
+        "
+        autoFocus
         placeholder="Enter your task here"
       />
-      <div className="flex justify-center items-center">
+      <div className="flex justify-center items-center gap-4 sm:pr-12">
         <SaveButton />
         <DeleteButton />
       </div>
@@ -55,4 +56,4 @@ const ItemInput = () => {
   )
 }
 
-export default ItemInput
+export default ItemInputBox

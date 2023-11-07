@@ -5,7 +5,7 @@ const SaveButton = () => {
   }
 
   return (
-    <div className="p-4">
+    <div className="">
       <button className='
         rounded-full
         p-4

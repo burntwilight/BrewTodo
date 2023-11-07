@@ -24,6 +24,10 @@ html, body {
   scroll-behavior: smooth;
 }
 
+#text-area::-webkit-resizer {
+  display: none;
+}
+
 #text-area::-webkit-scrollbar {
   display: none;
 }
@@ -37,6 +41,10 @@ html, body {
   animation: animateIn 0.3s ease 0.15s both;
 }
 
+.animate-in-slow {
+  animation: animateIn 0.8s ease 0.4s both;
+}
+
 @keyframes animateIn {
   from {
     opacity: 0;
@@ -45,5 +53,20 @@ html, body {
   to {
     opacity: 1;
     transform: translateY(0);
+  }
+}
+
+.animate-in-side {
+  animation: animateSide 0.3s ease 0.15s both;
+}
+
+@keyframes animateSide {
+  from {
+    opacity: 0;
+    transform: translateX(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
   }
 }
