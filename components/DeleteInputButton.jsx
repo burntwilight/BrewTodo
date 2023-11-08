@@ -1,4 +1,7 @@
+'use client'
+
 const DeleteButton = () => {
+  
   return (
     <div>
       <button className='
@@ -17,7 +20,8 @@ const DeleteButton = () => {
         justify-center
         items-center
         text-sm     
-      '>
+      '
+      >
         x
       </button>
     </div>

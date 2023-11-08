@@ -74,8 +74,10 @@ const page = async (searchParams) => {
         <input
           className="rounded-md px-4 py-2 bg-background text-text border mb-6"
           name="email"
+          id='email'
           placeholder="you@example.com"
           required
+          autoComplete='email'
         />
         <label className="text-md text-text" htmlFor="password">
           Password
@@ -83,6 +85,7 @@ const page = async (searchParams) => {
         <input
           className="rounded-md px-4 py-2 bg-background text-text border mb-6"
           type="password"
+          id='password'
           name="password"
           placeholder="••••••••"
           required

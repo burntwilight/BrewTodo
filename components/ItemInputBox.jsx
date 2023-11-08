@@ -2,7 +2,7 @@
 
 import React, { useEffect, useRef } from 'react'
 import SaveButton from '@/components/SaveButton'
-import DeleteButton from '@/components/DeleteButton'
+import DeleteButton from '@/components/DeleteInputButton'
 
 const ItemInputBox = () => {
   const textAreaRef = useRef(null)
@@ -52,7 +52,7 @@ const ItemInputBox = () => {
       />
       <div className="flex justify-center items-center sm:gap-12 gap-4 sm:pr-12 sm:pl-12 p-4">
         <SaveButton />
-        <DeleteButton />
+        {/* <DeleteButton /> */}
       </div>
     </div>
   )

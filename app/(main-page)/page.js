@@ -1,13 +1,21 @@
-import { redirect } from "next/navigation"
 
 import getUserItems from "@/actions/getUserItems"
+import getUser from "@/actions/getUser"
 import ToDoItem from "@/components/ToDoItem"
 import ItemInputBox from "@/components/ItemInputBox"
+import { useRouter } from "next/navigation"
 
 const Page = async () => {
-  const userItems = await getUserItems()
+  const router = useRouter
+  
+  const user = await getUser()
 
-  if (userItems[0] !== undefined) {
+  if (user === null) {
+    router.push('/account')
+  } else {
+    
+    const userItems = await getUserItems(user.id)
+    
     return (
       <main className="min-h-[80vh] w-full flex flex-col justify-between items-center p-24">
         <div className="animate-in-slow flex flex-col justify-center items-center pb-24">
@@ -16,7 +24,7 @@ const Page = async () => {
               (
                 <ToDoItem
                   key={item.id}
-                  text={item.task}
+                  item={item}
                 />
               )
             ) 
@@ -26,10 +34,7 @@ const Page = async () => {
         <ItemInputBox />
       </main>
     )
-  } else {
-    return redirect('/account')
-  }
-  
 }
+  }
 
 export default Page

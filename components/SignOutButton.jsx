@@ -1,3 +1,5 @@
+'use client'
+
 import { PiSignOutThin } from 'react-icons/pi'
 
 const SignOutButton = () => {

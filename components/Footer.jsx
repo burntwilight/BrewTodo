@@ -1,3 +1,5 @@
+'use client'
+
 const Footer = () => {
   return (
     <footer className="min-h-[10vh] flex justify-center p-4 text-text text-md">
