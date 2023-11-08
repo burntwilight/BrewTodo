@@ -15,7 +15,8 @@ const MiniSoundPlayer = () => {
       onplay: () => setIsPlaying(true),
       onend: () => setIsPlaying(false),
       onpause: () => setIsPlaying(false),
-      format: ['mp3']
+      format: ['mp3'],
+      playbackRate: .875
     }
   );
 
@@ -26,20 +27,7 @@ const MiniSoundPlayer = () => {
       pause()
     }
   };
-
-  useEffect(() => {
-    if (sound) {
-      sound.play()
-    }
-
-    return () => {
-      if (sound) {
-        sound.unload()
-      }
-    }
-  }, [sound])
-
-
+  
   return (
     <div className='
       flex 
