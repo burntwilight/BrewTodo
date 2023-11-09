@@ -16,7 +16,7 @@ const MiniSoundPlayer = () => {
       onend: () => setIsPlaying(false),
       onpause: () => setIsPlaying(false),
       format: ['mp3'],
-      playbackRate: .875
+      playbackRate: .9
     }
   );
 
