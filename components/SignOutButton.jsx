@@ -1,11 +1,35 @@
 'use client'
 
+import { useRouter } from 'next/navigation'
 import { PiSignOutThin } from 'react-icons/pi'
+import { createBrowserClient } from '@supabase/ssr'
+import { toast } from "react-hot-toast"
 
-const SignOutButton = () => {
 
-  const handleClick = () => {
-    return
+const SignOutButton = ({ user }) => {
+  const router = useRouter()
+
+  const signOut = async () => {
+
+    if (user === null) {
+      toast.error('No user currently signed in')
+      return router.push('/account')
+    }
+
+    const supabase = createBrowserClient(
+      process.env.NEXT_PUBLIC_SUPABASE_URL,
+      process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY
+    )
+    
+    const { error } = await supabase.auth.signOut()
+
+    if (error) {
+      toast.error(error.message)
+      return router.push('/')
+    } 
+
+    toast.success("Successfully signed out!")
+    return router.refresh()
   }
 
   return (
@@ -26,7 +50,7 @@ const SignOutButton = () => {
           border 
           border-text
         '
-        onClick={handleClick}
+        onClick={signOut}
         >
             <PiSignOutThin className='w-6 h-6' />
         </button>

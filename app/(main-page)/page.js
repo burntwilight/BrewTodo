@@ -7,6 +7,7 @@ import Link from "next/link"
 import { TbMoodSmileBeam } from 'react-icons/tb'
 
 const Page = async () => {
+
   const user = await getUser()
 
   if (user === null) {

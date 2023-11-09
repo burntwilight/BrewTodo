@@ -2,9 +2,11 @@ import Link from 'next/link'
 import { headers, cookies } from 'next/headers'
 import { createClient } from '@/utils/supabase/server'
 import { redirect } from 'next/navigation'
-import { toast } from "react-hot-toast"
+// import { toast } from "react-hot-toast"
+
 
 const page = async (searchParams) => {
+
   const signIn = async (formData) => {
     'use server'
 
@@ -24,7 +26,7 @@ const page = async (searchParams) => {
     }
 
     // toast.success('Successfully signed in!')
-    return redirect('/')  
+    return redirect('/')
   }
 
   const signUp = async (formData) => {
@@ -45,11 +47,11 @@ const page = async (searchParams) => {
     })
 
     if (error) {
-      // toast.error(error.message)
+      toast.error(error.message)
       return redirect('/account?message=Could not authenticate user signup')
     } 
 
-    // toast.success("Success! Check email to continue sign in process.")
+    toast.success("Success! Check email to continue sign in process.")
     return redirect('/account?message=Check email to continue sign in process')  
   }
 
