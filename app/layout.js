@@ -5,7 +5,7 @@ import Footer from '@/components/Footer'
 import ToastProvider from '@/providers/ToastProvider'
 
 const font = Poppins({ weight: ['400', '700'], subsets: ['latin'] })
-// Brew to do? Brew list?
+
 export const metadata = {
   title: 'BrewTodo',
   description: 'Morning to do list website',

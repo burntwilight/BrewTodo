@@ -4,6 +4,7 @@ import getUser from "@/actions/getUser"
 import ToDoItem from "@/components/ToDoItem"
 import ItemInputBox from "@/components/ItemInputBox"
 import Link from "next/link"
+import { TbMoodSmileBeam } from 'react-icons/tb'
 
 const Page = async () => {
   const user = await getUser()
@@ -22,7 +23,7 @@ const Page = async () => {
     return (
       <main className="min-h-[80vh] w-full flex flex-col justify-between items-center p-24">
         <div className="animate-in-slow flex flex-col justify-center items-center pb-24">
-          {userItems.map(
+          {userItems[0] ? userItems.map(
             (item) =>
               (
                 <ToDoItem
@@ -30,7 +31,9 @@ const Page = async () => {
                   item={item}
                 />
               )
-            ) 
+            )
+            :
+            <TbMoodSmileBeam className="text-text" size={32} />
           }
         </div>
         <div className="flex flex-col justify-center items-center border-b-[1px] border-text w-full mb-4"></div>

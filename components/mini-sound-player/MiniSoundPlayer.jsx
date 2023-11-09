@@ -8,7 +8,7 @@ import Slider from './Slider'
 const MiniSoundPlayer = () => {
   const audioUrl = '/audio/lofiforwebsite.mp3';
   const [isPlaying, setIsPlaying] = useState(false);
-  const [volume, setVolume] = useState(.5)
+  const [volume, setVolume] = useState(.2)
 
   const [play, { pause, sound }] = useSound(audioUrl, { 
       volume: volume,
