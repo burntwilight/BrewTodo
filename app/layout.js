@@ -4,6 +4,7 @@ import Navbar from '@/components/Navbar'
 import Footer from '@/components/Footer'
 import ToastProvider from '@/providers/ToastProvider'
 import getUser from '@/actions/getUser'
+import { Analytics } from '@vercel/analytics/react'
 
 const font = Poppins({ weight: ['400', '700'], subsets: ['latin'] })
 
@@ -23,6 +24,7 @@ export default async function RootLayout({ children }) {
           <Navbar user={user} />
             {children}
           <Footer />
+          <Analytics />
         {/* </UserProvider> */}
       </body>
     </html>
