@@ -47,11 +47,11 @@ const page = async (searchParams) => {
     })
 
     if (error) {
-      toast.error(error.message)
+      // toast.error(error.message)
       return redirect('/account?message=Could not authenticate user signup')
     } 
 
-    toast.success("Success! Check email to continue sign in process.")
+    // toast.success("Success! Check email to continue sign in process.")
     return redirect('/account?message=Check email to continue sign in process')  
   }
 
@@ -91,6 +91,7 @@ const page = async (searchParams) => {
           name="password"
           placeholder="••••••••"
           required
+          minLength={6}
         />
         <button className="
           bg-primary 
@@ -101,7 +102,7 @@ const page = async (searchParams) => {
           mb-2 
           hover:-translate-y-1
           hover:shadow-lg
-          hover:shadow-primary
+          hover:shadow-secondary
           transition
         ">
           Sign In
@@ -119,7 +120,7 @@ const page = async (searchParams) => {
             hover:-translate-y-1
             hover:shadow-lg
             hover:shadow-secondary
-            transition            
+            transition
         "
         >
           Sign Up

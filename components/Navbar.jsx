@@ -25,8 +25,10 @@ const Navbar = ( { user } ) => {
       <div className='flex justify-end h-8 gap-2'>
         <MiniSoundPlayer />
         <LightDarkButton />
-        <AccountButton />
-        <SignOutButton user={user}/>
+        { 
+          user !== null ? <SignOutButton user={user} /> : <AccountButton />
+        }
+        
       </div>   
     </nav>
   )
