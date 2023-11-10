@@ -7,8 +7,6 @@ import SignOutButton from './SignOutButton'
 import { useRouter } from 'next/navigation'
 import MiniSoundPlayer from './mini-sound-player/MiniSoundPlayer'
 
-// TODO MAKE SIGNOUT APPEAR IF LOGGED IN
-
 const Navbar = ( { user } ) => {
   const router = useRouter()
 
