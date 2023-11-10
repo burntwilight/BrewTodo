@@ -1,18 +1,21 @@
-import { headers, cookies } from 'next/headers'
-import { createClient } from '@/utils/supabase/server'
-import { redirect } from 'next/navigation'
-// import { toast } from "react-hot-toast"
+'use client'
 
+import { createBrowserClient } from '@supabase/ssr'
+import { useRouter } from 'next/navigation'
+import { toast } from "react-hot-toast"
 
 const page = async (searchParams) => {
+  const router = useRouter()
 
   const signIn = async (formData) => {
-    'use server'
 
     const email = formData.get('email')
     const password = formData.get('password')
-    const cookieStore = cookies()
-    const supabase = createClient(cookieStore)
+
+    const supabase = createBrowserClient(
+      process.env.NEXT_PUBLIC_SUPABASE_URL,
+      process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY      
+    )
 
     const { error } = await supabase.auth.signInWithPassword({
       email,
@@ -20,22 +23,24 @@ const page = async (searchParams) => {
     })
 
     if (error) {
-      // toast.error(error.message)
-      return redirect('/account?message=Could not authenticate user log in')
+      // return redirect('/account?message=Could not authenticate user log in')
+      toast.error(error.message)
+      return
     }
-
-    // toast.success('Successfully signed in!')
-    return redirect('/')
+    router.refresh()
+    router.push('/')
+    toast.success('Successfully signed in!')
   }
 
   const signUp = async (formData) => {
-    'use server'
 
-    const origin = headers().get('origin')
+
     const email = formData.get('email')
     const password = formData.get('password')
-    const cookieStore = cookies()
-    const supabase = createClient(cookieStore)
+    const supabase = createBrowserClient(
+      process.env.NEXT_PUBLIC_SUPABASE_URL,
+      process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY
+    )
 
     const { error } = await supabase.auth.signUp({
       email,
@@ -46,12 +51,11 @@ const page = async (searchParams) => {
     })
 
     if (error) {
-      // toast.error(error.message)
-      return redirect('/account?message=Could not authenticate user signup')
+      toast.error(error.message)
+      return
     } 
-
-    // toast.success("Success! Check email to continue sign in process.")
-    return redirect('/account?message=Check email to continue sign in process')  
+    router.refresh()
+    toast.success("Success! Check email to continue sign in process.")
   }
 
   return (

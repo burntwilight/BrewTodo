@@ -6,7 +6,7 @@ import { useState, useEffect } from 'react'
 import Slider from './Slider'
 
 const MiniSoundPlayer = () => {
-  const audioUrl = '/audio/lofiforwebsite.mp3';
+  const audioUrl = 'https://ogusehqfcsewmvsbvsae.supabase.co/storage/v1/object/public/songs/lofiforwebsite.mp3?t=2023-11-10T19%3A59%3A58.575Z'
   const [isPlaying, setIsPlaying] = useState(false);
   const [volume, setVolume] = useState(.2)
 
