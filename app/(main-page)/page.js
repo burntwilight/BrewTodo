@@ -34,11 +34,11 @@ const Page = async () => {
               )
             )
             :
-            <TbMoodSmileBeam className="text-text" size={32} />
+            <TbMoodSmileBeam className="text-text" size={64} />
           }
         </div>
         <div className="flex flex-col justify-center items-center border-b-[1px] border-text w-full mb-4"></div>
-        <ItemInputBox />
+        <ItemInputBox user={user} />
       </main>
     )
 }
