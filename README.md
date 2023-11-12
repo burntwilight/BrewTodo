@@ -4,11 +4,11 @@
 
 Todo list application using Next.js, Supabase, and Tailwind.
 
-([Home page](https://brewtodo-khaki.vercel.app/))
-<img src='' />
+([No Login](https://brewtodo-khaki.vercel.app/))
+<img src='BrewTodo - Home.png' />
 
-([Account page](https://brewtodo-khaki.vercel.app/))
+([Login/Signup](https://brewtodo-khaki.vercel.app/))
 <img src='BrewTodo - Sign-In.png' />
 
-([DarkMode page](https://brewtodo-khaki.vercel.app/))
+([DarkMode](https://brewtodo-khaki.vercel.app/))
 <img src='BrewTodo - Sign-In - Dark.png' />
