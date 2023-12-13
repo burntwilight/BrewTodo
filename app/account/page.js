@@ -68,7 +68,7 @@ const page = async (searchParams) => {
       items-center 
       p-24
     ">
-      <h1 className='text-text animate-in font-bold text-2xl'>Please sign in or sign up</h1>
+      <h1 className='text-text animate-in font-bold text-2xl text-center'>Please sign in or sign up</h1>
       <form
         className="animate-in-slow flex-1 flex flex-col w-full justify-center gap-2 text-text"
         action={signIn}

@@ -4,43 +4,27 @@ import ToDoItem from "@/components/ToDoItem"
 import ItemInputBox from "@/components/ItemInputBox"
 import Link from "next/link"
 import { TbMoodSmileBeam } from 'react-icons/tb'
+import { redirect } from "next/navigation"
+
 
 const Page = async () => {
 
+
   const user = await getUser()
+
 
   if (user === null) {
     return (
-    <main className="min-h-[80vh] w-full flex flex-col justify-between items-center p-24">
-      <p className="text-text animate-in font-bold text-2xl">No user found. Signin/Signup <Link className="text-accent text-2xl hover:text-primary transition underline" href={'/account'}>here!</Link></p>
-      <div className="flex flex-col justify-center items-center border-b-[1px] border-text w-full mb-4"></div>
+    <main className="min-h-[80vh] w-full flex flex-col items-center p-24">
+      <h1 className="text-4xl font-bold my-8 text-center text-text">Welcome to BrewTodo!</h1>
+      <Link className="text-accent my-auto text-2xl hover:text-background hover:bg-primary border-accent transition border rounded-full p-4" href={'/account'}>Signin/Signup</Link>
     </main>
   )
   } else {
     
-    const userItems = await getUserItems(user.id)
-    
-    return (
-      <main className="min-h-[80vh] w-full flex flex-col justify-between items-center p-24">
-        <div className="animate-in-slow flex flex-col justify-center items-center pb-24">
-          {userItems[0] ? userItems.map(
-            (item) =>
-              (
-                <ToDoItem
-                  key={item.id}
-                  item={item}
-                />
-              )
-            )
-            :
-            <TbMoodSmileBeam className="text-text" size={64} />
-          }
-        </div>
-        <div className="flex flex-col justify-center items-center border-b-[1px] border-text w-full mb-4"></div>
-        <ItemInputBox user={user} />
-      </main>
-    )
-}
+      redirect('/todo');
+
+    }
   }
 
 export default Page
