@@ -65,8 +65,9 @@ const page = async (searchParams) => {
       flex 
       flex-col 
       justify-between 
-      items-center 
-      p-24
+      items-center
+      p-6
+      sm:p-24
     ">
       <h1 className='text-text animate-in font-bold text-2xl text-center'>Please sign in or sign up</h1>
       <form
